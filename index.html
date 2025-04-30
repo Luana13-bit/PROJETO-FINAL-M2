@@ -1,24 +1,19 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Quiz do Aranhaverso 🕸️</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz do Aranhaverso</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1 id="titulo">Quiz do Aranhaverso 🕷️</h1>
+    <h1>Quiz do Aranhaverso 🕷️</h1>
   </header>
-
   <main id="quiz-container">
-    <!-- Área da pergunta -->
     <section id="pergunta-area">
       <h2 id="pergunta">Carregando pergunta...</h2>
-      <div class="opcoes" id="opcoes">
-        <!-- Botões das opções vão aqui via JS -->
-      </div>
+      <div class="opcoes" id="opcoes"></div>
     </section>
   
 
@@ -26,14 +21,12 @@
     <img id="imagem-pergunta" class="fade-in" src="" alt="" width="300" />
 
     <!-- Mensagem final de vitória ou derrota -->
+    <img id="imagem-pergunta" src="" alt="Imagem da pergunta" style="display: none;" />
     <p id="mensagem"></p>
   </main>
-
   <footer>
     <p>&copy; 2025 - Criado pelo Grupo Gabi Flores, João Pedro, Luana, Luisa e Luis.</p>
   </footer>
-
-  <!-- Script principal -->
   <script src="script.js"></script>
 </body>
 </html>

@@ -1,73 +1,63 @@
-
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #0a0a0a;
-    color: white;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-  }
-  
-  header, footer {
-    background-color: #161616;
-    padding: 20px;
-  }
-  
-  #titulo {
-    color: #e60000;
-    animation: aparecer 1s ease-in-out;
-  }
-  
-  main {
-    padding: 30px;
-  }
-  
-  .opcoes button {
-    display: block;
-    margin: 10px auto;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    background-color: #222;
-    color: white;
-    transition: 0.3s;
-  }
-  
-  .opcoes button:hover {
-    background-color: #e60000;
-    transform: scale(1.05);
-  }
-  
-  #mensagem {
-    font-weight: bold;
-    margin-top: 20px;
-    color: yellow;
-  }
-  
-  #imagem-pergunta {
-    margin-top: 20px;
-    border-radius: 20px;
-    max-width: 90%;
-    transition: transform 0.5s;
-  }
-  
-  #imagem-pergunta:hover {
-    transform: scale(1.05);
-  }
-  
-  .fade-in {
-    animation: aparecer 1s ease-in-out;
-  }
-  
-  @keyframes aparecer {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+  font-family: 'Arial', sans-serif;
+  background-color: #0d0d0d;
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #1a1a1a;
+  padding: 20px;
+}
+
+#quiz-container {
+  padding: 20px;
+}
+
+#imagem-pergunta {
+  margin: 20px auto;
+  max-width: 300px;
+  border-radius: 10px;
+  transition: transform 0.5s ease;
+}
+
+#imagem-pergunta:hover {
+  transform: scale(1.05);
+}
+
+.opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+  margin: 20px auto;
+}
+
+.opcao-btn {
+  background-color: #e60000;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.opcao-btn:hover {
+  background-color: #ff3333;
+}
+
+#mensagem {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+footer {
+  margin-top: 40px;
+  background-color: #1a1a1a;
+  padding: 10px;
+  color: #ccc;
+}
