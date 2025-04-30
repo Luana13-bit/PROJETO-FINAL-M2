@@ -1,68 +1,87 @@
-
 let nomeJogador = "";
-
-while (!nomeJogador || nomeJogador.trim() === "") {
-  nomeJogador = prompt("Digite seu nome para começar o quiz:");
-}
 
 const perguntas = [
   {
-    texto: "Qual o nome verdadeiro do Homem-Aranha no Aranhaverso?",
-    opcoes: ["Peter Parker", "Miles Morales", "Ben Reilly", "Miguel O'Hara"],
-    correta: 1
+    texto: "Quem é o Homem-Aranha principal em 'Aranhaverso'?",
+    opcoes: ["Peter Parker", "Miguel O'Hara", "Miles Morales", "Gwen Stacy"],
+    correta: 2,
+    imagem: "img/miles.png"
   },
   {
-    texto: "Qual Homem-Aranha é do futuro?",
-    opcoes: ["Spider-Gwen", "Peter B. Parker", "Miguel O'Hara", "Miles Morales"],
-    correta: 2
+    texto: "Quem é o Homem-Aranha 2099?",
+    opcoes: ["Peter Parker", "Miles Morales", "Gwen Stacy", "Miguel O'Hara"],
+    correta: 3,
+    imagem: "img/miguel.png"
   },
   {
-    texto: "Quem é o vilão principal no primeiro Aranhaverso?",
-    opcoes: ["Rei do Crime", "Venom", "Duende Verde", "Octopus"],
-    correta: 0
+    texto: "Quem é o vilão grandão do filme?",
+    opcoes: ["Venom", "Rei do Crime", "Duende Verde", "Doutor Octopus"],
+    correta: 1,
+    imagem: "img/rei-do-crime.png"
   }
 ];
 
-const imagens = [
-  "img/miles.png",
-  "img/miguel.png",
-  "img/rei-do-crime.png"
-];
+let faseAtual = 0;
 
-let fase = 0;
+function iniciarQuiz() {
+  // Pede o nome do jogador com validação
+  while (!nomeJogador) {
+    nomeJogador = prompt("Digite seu nome para começar:");
+    if (!nomeJogador || nomeJogador.trim().length < 2) {
+      alert("Digite um nome válido com pelo menos 2 letras.");
+      nomeJogador = "";
+    }
+  }
+
+  faseAtual = 0;
+  document.getElementById("mensagem").textContent = `Boa sorte, ${nomeJogador}!`;
+  mostrarPergunta();
+}
 
 function mostrarPergunta() {
-  if (fase >= perguntas.length) {
-    document.getElementById("mensagem").innerText = `Parabéns, ${nomeJogador}! Você venceu o quiz! 🎉`;
-    document.getElementById("pergunta-area").style.display = "none";
-    document.getElementById("imagem-pergunta").src = "img/vitoria.png";
-    return;
-  }
+  const pergunta = perguntas[faseAtual];
+  document.getElementById("pergunta").textContent = pergunta.texto;
+  document.getElementById("imagem-pergunta").src = pergunta.imagem;
+  document.getElementById("imagem-pergunta").style.display = "block"; // Mostra a imagem da pergunta
 
-  const atual = perguntas[fase];
-  document.getElementById("pergunta").innerText = atual.texto;
-  document.getElementById("imagem-pergunta").src = imagens[fase];
-  
   const opcoesDiv = document.getElementById("opcoes");
   opcoesDiv.innerHTML = "";
 
-  atual.opcoes.forEach((opcao, index) => {
-    const btn = document.createElement("button");
-    btn.innerText = opcao;
-    btn.onclick = () => verificarResposta(index);
-    opcoesDiv.appendChild(btn);
+  pergunta.opcoes.forEach((opcao, index) => {
+    const botao = document.createElement("button");
+    botao.textContent = opcao;
+    botao.className = "opcao-btn";
+    botao.onclick = () => verificarResposta(index);
+    opcoesDiv.appendChild(botao);
   });
 }
 
-function verificarResposta(escolha) {
-  if (escolha === perguntas[fase].correta) {
-    fase++;
-    mostrarPergunta();
+function verificarResposta(escolhida) {
+  const correta = perguntas[faseAtual].correta;
+  if (escolhida === correta) {
+    faseAtual++;
+    if (faseAtual < perguntas.length) {
+      mostrarPergunta();
+    } else {
+      mostrarVitoria();
+    }
   } else {
-    document.getElementById("mensagem").innerText = `Errou, ${nomeJogador}! Fim de jogo. 😢`;
-    document.getElementById("pergunta-area").style.display = "none";
-    document.getElementById("imagem-pergunta").src = "img/derrota.png";
+    mostrarDerrota();
   }
 }
 
-mostrarPergunta();
+function mostrarVitoria() {
+  document.getElementById("pergunta").textContent = `Parabéns, ${nomeJogador}! Você venceu! 🕷️`;
+  document.getElementById("imagem-pergunta").src = "img/vitoria.png";
+  document.getElementById("opcoes").innerHTML = "";
+  document.getElementById("mensagem").textContent = "Você completou o quiz com sucesso!";
+}
+
+function mostrarDerrota() {
+  document.getElementById("pergunta").textContent = `Poxa, ${nomeJogador}... Você perdeu 😢`;
+  document.getElementById("imagem-pergunta").src = "img/derrota.png";
+  document.getElementById("opcoes").innerHTML = "";
+  document.getElementById("mensagem").textContent = "Tente novamente!";
+}
+
+window.onload = iniciarQuiz;
