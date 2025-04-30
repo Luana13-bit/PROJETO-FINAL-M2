@@ -20,6 +20,11 @@ const perguntas = [
     texto: "Quem é o vilão principal no primeiro Aranhaverso?",
     opcoes: ["Rei do Crime", "Venom", "Duende Verde", "Octopus"],
     correta: 0
+  },
+  {
+    texto: "Como Miles Morales se torna o Homem-Aranha?",
+    opcoes:["Ele herdou os poderes", "Ele foi picado por uma aranha mutante", "Ele criou seus poderes em um laboratorio","Ele roubou os poderes"],
+    correta: 1
   }
 ];
 
